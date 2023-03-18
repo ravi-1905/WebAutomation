@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+	<Properties>
+		<Property name="basePath">./logs</Property>
+	</Properties>
+	<Appenders>
+		<RollingFile name="File" fileName="${basePath}/TestExecution.log"
+			filePattern="${basePath}/prints-%d{yyyy-MM-dd}.log" immediateFlush="true">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+			<SizeBasedTriggeringPolicy size="500000" />
+			<DefaultRolloverStrategy max="1">
+				<Delete basePath="${basePathr}" maxDepth="10">
+					<!-- Delete all files older than 30 days -->
+					<IfLastModified age="30d" />
+				</Delete>
+			</DefaultRolloverStrategy>
+		</RollingFile>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Root level="INFO" additivity="false">
+            <AppenderRef ref="File" />
+        </Root>
+	</Loggers>
+</Configuration>

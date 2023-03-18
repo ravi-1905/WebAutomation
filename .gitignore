@@ -1,0 +1,8 @@
+.DS_Store
+.classpath
+.settings
+bin
+target/
+test-output/
+logs/
+reports/
