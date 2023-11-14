@@ -39,4 +39,5 @@ public class ExtentManager {
 
 		return extentReports;
 	}
+	
 }
